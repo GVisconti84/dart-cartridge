@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+class Cartridge
+  def start
+    exec(File.join(ENV["OPENSHIFT_DART_DIR"], 'dart-sdk', 'bin', 'dart'), File.join(ENV["OPENSHIFT_REPO_DIR"], 'main.dart'))
+  end
+end
+
+app = Cartridge.new
+
+cmd = (ARGV[0] || "").to_sym
+
+if app.respond_to?(cmd)
+  app.send(cmd)
+else
+  puts "Unknow command"
+end

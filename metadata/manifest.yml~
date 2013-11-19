@@ -1,0 +1,61 @@
+Name: dart
+
+Cartridge-Short-Name: DART
+Cartridge-Version: '0.0.1'
+Cartridge-Vendor: mjelen
+
+Display-Name: Dart (current)
+Description: "Dart is a new language for scalable web app engineering"
+
+Version: '1.0'
+Website: http://www.dartlang.org
+
+Categories:
+  - service
+  - web_framework
+  - dart
+
+Provides:
+  - dart-1.0
+  - dart
+
+Scaling:
+  Min: 1
+  Max: -1
+
+Publishes:
+  publish-http-url:
+    Type: "NET_TCP:httpd-proxy-info"
+  publish-gear-endpoint:
+    Type: "NET_TCP:gear-endpoint-info"
+
+Subscribes:
+  set-db-connection-info:
+    Type: "NET_TCP:db:connection-info"
+    Required: false
+  set-nosql-db-connection-info:
+    Type: "NET_TCP:nosqldb:connection-info"
+    Required: false
+  set-mysql-connection-info:
+    Type: "NET_TCP:db:mysql"
+    Required : false
+  set-postgres-connection-info:
+    Type: "NET_TCP:db:postgres"
+    Required : false
+  set-doc-url:
+    Type: "STRING:urlpath"
+    Required : false
+
+Endpoints:
+  - Private-IP-Name:   HTTP_IP
+    Private-Port-Name: HTTP_PORT
+    Private-Port:      8080
+    Public-Port-Name:  PROXY_HTTP_PORT
+    Mappings:
+      - Frontend:      ""
+        Backend:       ""
+        Options:       { websocket: false }
+      - Frontend:      "/health"
+        Backend:       ""
+        Options:       { health: true }
+
