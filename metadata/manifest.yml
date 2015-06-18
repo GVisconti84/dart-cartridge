@@ -9,6 +9,7 @@ Description: "Dart is a new language for scalable web app engineering"
 
 Version: '1.0'
 Website: http://www.dartlang.org
+Source-Url: 'https://github.com/Whisky84/dart-cartridge/archive/master.zip'
 
 Categories:
   - service
